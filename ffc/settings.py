@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard.apps.DashboardConfig',
+    'django_cpf_cnpj',
+    'rolepermissions',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
