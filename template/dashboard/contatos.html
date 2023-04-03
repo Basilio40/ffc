@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">54</h3>
+                                    <h3 class="mb-2 fw-bold">{{ativos}}</h3>
                                     <p class="fs-13 mb-0">Contatos de Clientes</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">23</h3>
+                                    <h3 class="mb-2 fw-bold">{{implantacao}}</h3>
                                     <p class="fs-13 mb-0">Contatos de Seguradoras</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -66,7 +66,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">11</h3>
+                                    <h3 class="mb-2 fw-bold">{{inativos}}</h3>
                                     <p class="fs-13 mb-0">Contatos não associados</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -85,7 +85,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">88</h3>
+                                    <h3 class="mb-2 fw-bold">{{total}}</h3>
                                     <p class="fs-13 mb-0">Contatos no total</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -123,7 +123,7 @@
                                 <table id="data-table" class="table text-nowrap mb-0 table-bordered">
                                     <thead class="table-head">
                                         <tr>
-                                            <th class="bg-transparent border-bottom-0 wp-15">ID</th>
+                                            <th class="bg-transparent border-bottom-0">ID</th>
                                             <th class="bg-transparent border-bottom-0">Avatar</th>
                                             <th class="bg-transparent border-bottom-0">Nome</th>
                                             <th class="bg-transparent border-bottom-0">E-Mail</th>
@@ -133,116 +133,28 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
+                                        {% for contato in contatos %}
+
                                         <tr>
                                             <td>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="data-image avatar avatar-md rounded-circle"></span>
-                                                    <div class="user-details ms-2">
-                                                        <span>32</span>
-                                                    </div>
-                                                </div>
+                                                {{contato.id}}
                                             </td>
-                                            <td><a href="#" class="text-dark" data-bs-target="#Vertically" data-bs-toggle="modal" >Mauricio</a></td>
-                                            <td><a href="project-details" class="text-dark">Mauricio Bartell</a></td>
-                                            <td>mauricio.bartell@lebes.com</td>
+                                            <td><img src="{{contato.avatar.url}}" alt="profile-user" class="avatar  profile-user brround cover-image">__{{contato.avatar}}</td>
+                                            <td><a href="project-details" class="text-dark">{{contato.nome}}</a></td>
+                                            <td>{{contato.email}}</td>
                                             <td>
-                                                +55 21 994132 1026
+                                                {{contato.telefone}}
                                             </td>
                                             <td>
-                                                Drebes & CIA LTDA
+                                                {{contato.razao_social}}
                                             </td>
                                             <td>
-                                                <span class="status-indicator projects completed">Ativo</span>
+                                                <span class="status-indicator projects completed">{{contato.status}}</span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="data-image avatar avatar-md rounded-circle"></span>
-                                                    <div class="user-details ms-2">
-                                                        <span>32</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><a href="#" class="text-dark" data-bs-target="#Vertically" data-bs-toggle="modal" >Mauricio</a></td>
-                                            <td><a href="project-details" class="text-dark">Mauricio Bartell</a></td>
-                                            <td>mauricio.bartell@lebes.com</td>
-                                            <td>
-                                                +55 21 994132 1026
-                                            </td>
-                                            <td>
-                                                Drebes & CIA LTDA
-                                            </td>
-                                            <td>
-                                                <span class="status-indicator projects completed">Ativo</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="data-image avatar avatar-md rounded-circle"></span>
-                                                    <div class="user-details ms-2">
-                                                        <span>32</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><a href="#" class="text-dark" data-bs-target="#Vertically" data-bs-toggle="modal" >Mauricio</a></td>
-                                            <td><a href="project-details" class="text-dark">Mauricio Bartell</a></td>
-                                            <td>mauricio.bartell@lebes.com</td>
-                                            <td>
-                                                +55 21 994132 1026
-                                            </td>
-                                            <td>
-                                                Drebes & CIA LTDA
-                                            </td>
-                                            <td>
-                                                <span class="status-indicator projects completed">Ativo</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="data-image avatar avatar-md rounded-circle"></span>
-                                                    <div class="user-details ms-2">
-                                                        <span>32</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><a href="#" class="text-dark" data-bs-target="#Vertically" data-bs-toggle="modal" >Mauricio</a></td>
-                                            <td><a href="project-details" class="text-dark">Mauricio Bartell</a></td>
-                                            <td>mauricio.bartell@lebes.com</td>
-                                            <td>
-                                                +55 21 994132 1026
-                                            </td>
-                                            <td>
-                                                Drebes & CIA LTDA
-                                            </td>
-                                            <td>
-                                                <span class="status-indicator projects completed">Ativo</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="data-image avatar avatar-md rounded-circle"></span>
-                                                    <div class="user-details ms-2">
-                                                        <span>32</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><a href="#" class="text-dark" data-bs-target="#Vertically" data-bs-toggle="modal" >Mauricio</a></td>
-                                            <td><a href="project-details" class="text-dark">Mauricio Bartell</a></td>
-                                            <td>mauricio.bartell@lebes.com</td>
-                                            <td>
-                                                +55 21 994132 1026
-                                            </td>
-                                            <td>
-                                                Drebes & CIA LTDA
-                                            </td>
-                                            <td>
-                                                <span class="status-indicator projects completed">Ativo</span>
-                                            </td>
-                                        </tr>
+
+                                        {% endfor %}
+                                        
                                     </tbody>
                                 </table>
                             </div>

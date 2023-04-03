@@ -10,6 +10,7 @@
             <div class="page-header">
                 <div>
                     <h1 class="page-title">Clientes</h1>
+                    
                 </div>
                 <div class="ms-auto pageheader-btn">
                     <ol class="breadcrumb">
@@ -28,7 +29,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">18</h3>
+                                    <h3 class="mb-2 fw-bold">{{ativos}}</h3>
                                     <p class="fs-13 mb-0">Clientes Ativos</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -47,7 +48,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">05</h3>
+                                    <h3 class="mb-2 fw-bold">{{implantacao}}</h3>
                                     <p class="fs-13 mb-0">Clientes em Implantação</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -66,7 +67,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">11</h3>
+                                    <h3 class="mb-2 fw-bold">{{inativos}}</h3>
                                     <p class="fs-13 mb-0">Clientes não ativos</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -85,7 +86,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-bold">24</h3>
+                                    <h3 class="mb-2 fw-bold">{{total}}</h3>
                                     <p class="fs-13 mb-0">Clientes no total</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
@@ -112,7 +113,7 @@
                     class="btn btn-dark"
                     data-bs-toggle="modal"
                     data-bs-target=".exampleModal"
-                    hx-get="{% url 'modal'%}"
+                    hx-get="{% url 'cliente_form' %}"
                     hx-target="#Label"
                     hx-swap="innerHTML"
                      > <i class="fa fa-pencil-square-o"></i> Editar Cliente</button>
@@ -133,7 +134,7 @@
                                     <thead class="table-head">
                                         <tr>
                                             <th class="bg-transparent border-bottom-0"></th>
-                                            <th class="bg-transparent border-bottom-0 wp-15">ID</th>
+                                            <th class="bg-transparent border-bottom-0">ID</th>
                                             <th class="bg-transparent border-bottom-0">Nome</th>
                                             <th class="bg-transparent border-bottom-0">Nome Curto</th>
                                             <th class="bg-transparent border-bottom-0">Tipo</th>
@@ -144,6 +145,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-body">
+                                        {% for cliente in clientes %}
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -153,16 +155,11 @@
                                                   </div>
                                             </td>
                                             <td>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="data-image avatar avatar-md rounded-circle"></span>
-                                                    <div class="user-details ms-2">
-                                                        <span>4146</span>
-                                                    </div>
-                                                </div>
+                                                <span>{{cliente.id}}</span>
                                             </td>
-                                            <td><a href="project-details" class="text-dark">Lojas Lebes</a></td>
-                                            <td>Lebes</td>
-                                            <td>Varejo</td>
+                                            <td><a href="project-details" class="text-dark">{{cliente.nome}}</a></td>
+                                            <td>{{cliente.nome_curto}}</td>
+                                            <td>{{cliente.tipo}}</td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <span class="data-image avatar avatar-md rounded-circle" style="background-image: url(https://media.licdn.com/dms/image/C4D03AQH4EqN4MWt2qQ/profile-displayphoto-shrink_800_800/0/1516977623063?e=1678924800&v=beta&t=qUxAMGFcbYeYDlYi2zO8HGcJVlRRv5JTGOqpF0vBiwM)"></span>
@@ -176,16 +173,18 @@
                                                 <div class="d-flex align-items-center">
                                                     <span class="data-image avatar avatar-md rounded-circle" style="background-image: url(https://media.licdn.com/dms/image/C4E03AQEb3cr6PDi2hg/profile-displayphoto-shrink_800_800/0/1554571393601?e=1678924800&v=beta&t=rSDltFouZ_MjSzq-XeZYzcm26eg_NrU3aEfLng-kZgI);"></span>
                                                     <div class="user-details ms-2">
-                                                        <h6 class="mb-0">Mauricio Bartell</h6>
+                                                        <h6 class="mb-0">{{cliente.fkcontatoprimario}}</h6>
                                                         <span class="text-muted fs-12">mauricio.bartell@lebes.com.br</span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>Drebes & CIA LTDA</td>
+                                            <td>{{cliente.razaosocial}}</td>
                                             <td>
-                                                <span class="status-indicator projects completed">Ativo - Implantado</span>
+                                                <span class="status-indicator projects completed">{{cliente.status}}</span>
                                             </td>
                                         </tr>
+
+                                        {% endfor %}
  
                                     </tbody>
                                 </table>

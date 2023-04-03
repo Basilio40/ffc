@@ -1,4 +1,5 @@
             {% load static %}
+			{% load permission_tags %}
                 
             <!--APP-SIDEBAR-->
             <div class="sticky">
@@ -31,18 +32,22 @@
 							<li>
 								<h3>Monitoramento</h3>
 							</li>
+							{% if user|can:'ver_servicos' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'servicos' %}">
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M21,13C21.6,13 22.1,13.2 22.4,13.6C22.8,14 23,14.5 23,15L15,18L8,16V7H9.9L17.2,9.7C17.7,9.9 18,10.3 18,10.8C18,11.1 17.9,11.4 17.7,11.6C17.5,11.8 17.2,12 16.8,12H14L12.3,11.3L12,12.2L14,13H21M2,7H6V18H2V7Z" /></svg>
 									<span class="side-menu__label ">Serviços</span>
 								</a>
 							</li>
+							{% endif %}
+							{% if user|can:'ver_operacoes' %}
 							<li class="slide">
 								<a class="side-menu__item " data-bs-toggle="slide" href="{% url 'operacoes-monitoramento' %}">
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" /></svg>
 									<span class="side-menu__label">Operações</span>
 								</a>
 							</li>
+							{% endif %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'recebimento-de-dados' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M22,15.04C22,17.23 20.24,19 18.07,19H5.93C3.76,19 2,17.23 2,15.04C2,13.07 3.43,11.44 5.31,11.14C5.28,11 5.27,10.86 5.27,10.71C5.27,9.33 6.38,8.2 7.76,8.2C8.37,8.2 8.94,8.43 9.37,8.8C10.14,7.05 11.13,5.44 13.91,5.44C17.28,5.44 18.87,8.06 18.87,10.83C18.87,10.94 18.87,11.06 18.86,11.17C20.65,11.54 22,13.13 22,15.04Z" /></svg>
@@ -52,6 +57,8 @@
 							<li>
 								<h3>Cadastros</h3>
 							</li>
+		
+							{% if user|can:'ver_contato' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'contatos' %}" >
 									<svg class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
@@ -60,36 +67,49 @@
 									<span class="side-menu__label">Contatos</span>
 								</a>
 							</li>
+							{% endif %}
+							{% if user|can:'ver_clientes' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'clientes' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M12,5.5C13.93,5.5 15.5,7.07 15.5,9C15.5,10.93 13.93,12.5 12,12.5C10.07,12.5 8.5,10.93 8.5,9C8.5,7.07 10.07,5.5 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14C3.34,14 2,12.66 2,11C2,9.34 3.34,8 5,8M19,8C20.66,8 22,9.34 22,11C22,12.66 20.66,14 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" /></svg>
 									<span class="side-menu__label">Clientes</span>
 								</a>
 							</li>
+							{% endif %}
+
+							{% if user|can:'ver_seguradoras' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'seguradoras' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M12,12H19C18.47,16.11 15.72,19.78 12,20.92V12H5V6.3L12,3.19M12,1L3,5V11C3,16.55 6.84,21.73 12,23C17.16,21.73 21,16.55 21,11V5L12,1Z" /></svg>
 									<span class="side-menu__label">Seguradoras</span>
 								</a>
 							</li>
+							{% endif %}
+							{% if user|can:'ver_contratos' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'contratos' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M21.71,8.71C22.96,7.46 22.39,6 21.71,5.29L18.71,2.29C17.45,1.04 16,1.61 15.29,2.29L13.59,4H11C9.1,4 8,5 7.44,6.15L3,10.59V14.59L2.29,15.29C1.04,16.55 1.61,18 2.29,18.71L5.29,21.71C5.83,22.25 6.41,22.45 6.96,22.45C7.67,22.45 8.32,22.1 8.71,21.71L11.41,19H15C16.7,19 17.56,17.94 17.87,16.9C19,16.6 19.62,15.74 19.87,14.9C21.42,14.5 22,13.03 22,12V9H21.41L21.71,8.71M20,12C20,12.45 19.81,13 19,13L18,13L18,14C18,14.45 17.81,15 17,15L16,15L16,16C16,16.45 15.81,17 15,17H10.59L7.31,20.28C7,20.57 6.82,20.4 6.71,20.29L3.72,17.31C3.43,17 3.6,16.82 3.71,16.71L5,15.41V11.41L7,9.41V11C7,12.21 7.8,14 10,14H20V12M20.29,7.29L18.59,9H11V11C11,11.45 10.81,12 10,12V8C9,7.54 9.17,6 11,6H14.41L16.69,3.72C17,3.43 17.18,3.6 17.29,3.71L20.28,6.69C20.57,7 20.4,7.18 20.29,7.29Z" /></svg>
 									<span class="side-menu__label">Contratos</span>
 								</a>
 							</li>
+							{% endif %}
+							{% if user|can:'ver_operacoes' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'operacoes-cadastros' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" /></svg>
 									<span class="side-menu__label">Operações</span>
 								</a>
 							</li>
+							{% endif %}
+							{% if user|can:'ver_auxiliares' %}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'auxiliares' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.86,18L18.9,19C17.5,20.2 14.94,21 12,21C7.59,21 4,19.21 4,17V7C4,4.79 7.58,3 12,3C14.95,3 17.5,3.8 18.9,5L17.86,6L17.5,6.4C16.65,5.77 14.78,5 12,5C8.13,5 6,6.5 6,7C13.37,9 14.5,8.81 15.42,8.54L16.38,9.5H13.5V10.92C13,10.97 12.5,11 12,11C9.61,11 7.47,10.47 6,9.64V12.45C7.3,13.4 9.58,14 12,14C12.5,14 13,13.97 13.5,13.92V14.5H16.38L15.38,15.5L15.5,15.61C14.41,15.86 13.24,16 12,16C9.72,16 7.61,15.55 6,14.77V17C6,17.5 8.13,19 12,19C14.78,19 16.65,18.23 17.5,17.61L17.86,18M18.92,7.08L17.5,8.5L20,11H15V13H20L17.5,15.5L18.92,16.92L23.84,12L18.92,7.08Z" /></svg>
 									<span class="side-menu__label">Auxiliares</span>
 								</a>
 							</li>
+							{% endif %}
+							{% if user|can:'ver_contabiliade' %}
 							<li>
 								<h3>Financeiro</h3>
 							</li>
@@ -105,12 +125,15 @@
 									<li><a href="{% url 'reembolso' %}" class="slide-item"> Reembolso</a></li>
 								</ul>
 							</li>
+							{% endif %}
+							{% if user|has_role:'cliente'%}
 							<li class="slide">
 								<a class="side-menu__item" data-bs-toggle="slide" href="{% url 'budget' %}" >
 									<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><path d="M7,15H9C9,16.08 10.37,17 12,17C13.63,17 15,16.08 15,15C15,13.9 13.96,13.5 11.76,12.97C9.64,12.44 7,11.78 7,9C7,7.21 8.47,5.69 10.5,5.18V3H13.5V5.18C15.53,5.69 17,7.21 17,9H15C15,7.92 13.63,7 12,7C10.37,7 9,7.92 9,9C9,10.1 10.04,10.5 12.24,11.03C14.36,11.56 17,12.22 17,15C17,16.79 15.53,18.31 13.5,18.82V21H10.5V18.82C8.47,18.31 7,16.79 7,15Z" /></svg>
 									<span class="side-menu__label">Budget</span>
 								</a>
 							</li>
+							{% endif %}
 							<li>
 								<h3>Admin Sistema</h3>
 							</li>

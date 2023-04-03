@@ -19,7 +19,7 @@
 					<div class="container-login100">
 						<div class="wrap-login100 p-0">
 							<div class="card-body">
-								<form class="login100-form validate-form">
+								<form class="login100-form validate-form" action="" method="POST">{% csrf_token %}
 									<span class="login100-form-title">
 										Entrar no Portal
 									</span>
@@ -41,9 +41,9 @@
 										<p class="mb-0"><a href="{% url 'forgot-password' %}" class="text-primary ms-1">Forgot Password?</a></p>
 									</div>
 									<div class="container-login100-form-btn">
-										<a href="{% url 'index' %}" class="login100-form-btn btn-primary">
+										<button  type="submit"   class="login100-form-btn btn-primary">
 											Login
-										</a>
+										</button>
 									</div>
 									<div class="text-center pt-3">
 										<p class="text-dark mb-0">Not a member?<a href="register" class="text-primary ms-1">Create an Account</a></p>
