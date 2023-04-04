@@ -7,6 +7,8 @@
 *.pyc
 __pycache__/
 local_settings.py
+db.sqlite3
+db.sqlite3-journal
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -131,9 +133,12 @@ celerybeat.pid
 
 # Environments
 .env
+.venv
 env/
+venv/
 ENV/
 env.bak/
+venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -247,5 +252,10 @@ cython_debug/
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+
+### Python Patch ###
+# Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
+poetry.toml
+
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django
